@@ -7,6 +7,7 @@ import com.example.allmovies.core.BaseConcatHolder
 import com.example.allmovies.databinding.PopularMovieRowBinding
 import com.example.allmovies.ui.adapters.MovieAdapter
 
+//Asignacion con respectivo recyclerview
 class PopularConcatAdapter(private val moviesadapter: MovieAdapter): RecyclerView.Adapter<BaseConcatHolder<*>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseConcatHolder<*> {
         val itembinding = PopularMovieRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)

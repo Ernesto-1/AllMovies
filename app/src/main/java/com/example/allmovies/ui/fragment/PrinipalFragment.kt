@@ -43,7 +43,8 @@ class PrinipalFragment : Fragment(R.layout.fragment_prinipal), MovieAdapter.OnMo
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     concatAdapter.apply {
-                        addAdapter(0,PopularConcatAdapter(MovieAdapter(
+                        addAdapter(0,PopularConcatAdapter(
+                            MovieAdapter(
                             result.data.first.results,this@PrinipalFragment)))
                         addAdapter(1,PlayingConcatAdapter(MovieAdapter(
                             result.data.second.results,this@PrinipalFragment)))

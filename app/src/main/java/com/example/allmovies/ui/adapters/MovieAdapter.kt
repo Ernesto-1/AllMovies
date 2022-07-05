@@ -10,9 +10,7 @@ import com.example.allmovies.core.BaseViewHolder
 import com.example.allmovies.data.model.movie
 import com.example.allmovies.databinding.MovieItemBinding
 
-class MovieAdapter(private val moviesList: List<movie>,
-                    private val itemClickListener: OnMovieClickListener
-): RecyclerView.Adapter<BaseViewHolder<*>>() {
+class MovieAdapter(private val moviesList: List<movie>, private val itemClickListener: OnMovieClickListener): RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     interface OnMovieClickListener{
         fun onMovieClick(movie:movie)
@@ -24,6 +22,7 @@ class MovieAdapter(private val moviesList: List<movie>,
         val itemBinding = MovieItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         val holder = MoviesViewHolder(itemBinding, parent.context)
 
+       // el click para cada pelicula
         itemBinding.root.setOnClickListener {
             val position = holder.bindingAdapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
                 ?:return@setOnClickListener
@@ -32,6 +31,7 @@ class MovieAdapter(private val moviesList: List<movie>,
         return holder
     }
 
+    //muestra en su posision cada pelicula
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         when(holder){
             is MoviesViewHolder -> holder.bind(moviesList[position])
@@ -41,6 +41,8 @@ class MovieAdapter(private val moviesList: List<movie>,
 
     override fun getItemCount(): Int = moviesList.size
 
+
+    //pone la imagen a cada pelicula
     private inner class MoviesViewHolder(val binding: MovieItemBinding, val context: Context):
         BaseViewHolder<movie>(binding.root){
         override fun bind(item: movie) {

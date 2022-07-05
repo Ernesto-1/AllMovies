@@ -3,13 +3,15 @@ package com.example.allmovies.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.example.allmovies.core.Resource
 import com.example.allmovies.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 
 class MovieViewModel(private val repo: MovieRepository): ViewModel() {
 
-    fun fetchMovies() = liveData(Dispatchers.IO){
+    //Usamos los estados de carga
+    fun fetchMovies() = liveData(viewModelScope.coroutineContext + Dispatchers.Main){
         emit(Resource.Loading())
 
         try {
@@ -20,6 +22,7 @@ class MovieViewModel(private val repo: MovieRepository): ViewModel() {
     }
 }
 
+//Crear instancia de repo
 class MoviewViewModelFactory(private val repo:MovieRepository): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(MovieRepository::class.java).newInstance(repo)

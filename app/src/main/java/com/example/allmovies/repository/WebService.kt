@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+//uso de retrofit
 interface WebService {
 
     @GET("movie/popular")
@@ -25,7 +26,7 @@ interface WebService {
 }
 
 
-
+//peticion a datasource, conertir json de api a movie
 object RetrofitClient{
     val webservice by lazy {
         Retrofit.Builder().baseUrl(AppConstants.BASE_URL)

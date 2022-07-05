@@ -7,6 +7,8 @@ import com.example.allmovies.core.BaseConcatHolder
 import com.example.allmovies.databinding.PlayingnowMovieRowBinding
 import com.example.allmovies.ui.adapters.MovieAdapter
 
+
+//Asignacion con respectivo recyclerview
 class PlayingConcatAdapter(private val moviesadapter: MovieAdapter): RecyclerView.Adapter<BaseConcatHolder<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseConcatHolder<*> {
